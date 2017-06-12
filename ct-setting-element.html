@@ -1,0 +1,124 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-textarea.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-toggle-button/paper-toggle-button.html">
+<!--
+`ct-setting-element`
+A element that display and edits a centular setting
+
+@demo demo/index.html
+-->
+
+<dom-module id="ct-setting-element">
+  <template id="ct-setting-element">
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <div class="row row-easy">
+          <div class="col-sm-8">
+
+               <template is="dom-if"  restamp if="{{ _isInputType('textarea', type)}}">
+
+                 <paper-textarea
+                        class="input-element"
+                        label="[[label]]"
+                        required="[[required]]"
+                        auto-validate
+                        value="[[value]]"
+                        error-message="[[errorMessage]]" ></paper-textarea>
+              </template>
+
+              <template is="dom-if" restamp if="{{_isInputType('text', type) }}">
+                <paper-input
+                        class="input-element"
+                        label="[[label]]"
+                        required="[[required]]"
+                        value = "[[value]]"
+                        auto-validate
+                        error-message="[[errorMessage]]" ></paper-input>
+              </template>
+
+              <template is="dom-if" restamp if="{{_isInputType('number', type) }}">
+                <paper-input
+                        class="input-element"
+                        label="[[label]]"
+                        required="[[required]]"
+                        value = "[[value]]"
+                        auto-validate
+                        error-message="[[errorMessage]]" ></paper-input>
+              </template>
+
+
+              <template is="dom-if" restamp if="[[_isInputType('boolean', type)]]">
+                [[label]]
+                <paper-toggle-button
+                        class="input-element"
+                        required="[[required]]"
+                        checked="[[value]]"
+                        auto-validate
+                        error-message="[[errorMessage]]"></paper-toggle-button>
+              </template>
+
+            <template is="dom-if" restamp if="[[_checkNote(note)]]">
+              <small>[[note]]</small>
+            </template>
+            <td class="text-center">
+                <paper-icon-button icon="create" class="table-button btn-default btn-sm" on-tap="_editHandler" raised></paper-icon-button>
+                <paper-icon-button icon="delete"  data-item-id$="[[item.id]]" class="table-button btn-danger btn-sm" on-tap="_modalHandler" raised></paper-icon-button>
+            </td>
+          </div>
+        </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'ct-setting-element',
+
+
+      properties: {
+        //Available options
+        //text
+        //number
+        //boolean
+        //textarea
+        type: {
+          type: String,
+          notify: true
+        },
+        label: {
+            type: String
+        },
+        note: {
+            type: String
+        },
+        value : {
+           type : String
+        },
+        errorMessage: {
+          type: String
+        },
+        key: {
+          type: String
+        }
+
+      },
+      _isInputType: function(expectedType, type){
+        return expectedType === type;
+      },
+      _checkNote : function(note){
+        return note != "";
+      },
+      _editHandler : function(e){
+        alert('Editing the stuffs');
+      },
+      _deleteHandler : function(e){
+        alert('Editing the stuffs');
+      }
+    });
+  </script>
+</dom-module>

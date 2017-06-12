@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>ct-setting-element demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../ct-setting-element.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic ct-setting-element demo</h3>
+      <demo-snippet>
+        <template>
+            <div><h4>Text</h4></div>
+            <ct-setting-element type='text' value='text' label='Text: '></ct-setting-element>
+            <div><h4>Text Area</h4></div>
+            <ct-setting-element type='textarea' value='textarea' label='TextArea: '></ct-setting-element>
+            <div><h4>Boolean</h4></div>
+            <ct-setting-element type='boolean' value='true' label='Boolean: '></ct-setting-element>
+            <div><h4>Number</h4></div>
+            <ct-setting-element type='number' note='this is a note' value='1234' label='Number: ' ></ct-setting-element>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
