@@ -21,13 +21,27 @@
       <demo-snippet>
         <template>
             <div><h4>Text</h4></div>
-            <ct-setting-element type='text' value='text' label='Text: '></ct-setting-element>
+            <ct-setting-element type='text'
+                                value='text'
+                                label='Text: '
+                                required error-message='This field is required'
+                                key='1'></ct-setting-element>
             <div><h4>Text Area</h4></div>
-            <ct-setting-element type='textarea' value='textarea' label='TextArea: '></ct-setting-element>
+            <ct-setting-element type='textarea'
+                                value='textarea'
+                                label='TextArea: '
+                                key='2'></ct-setting-element>
             <div><h4>Boolean</h4></div>
-            <ct-setting-element type='boolean' value='true' label='Boolean: '></ct-setting-element>
+            <ct-setting-element type='boolean'
+                                value='false'
+                                label='Boolean: '
+                                key='3'></ct-setting-element>
             <div><h4>Number</h4></div>
-            <ct-setting-element type='number' note='this is a note' value='1234' label='Number: ' ></ct-setting-element>
+            <ct-setting-element type='number'
+                                note='this is a note'
+                                value='1234'
+                                label='Number: '
+                                key='4'></ct-setting-element>
         </template>
       </demo-snippet>
     </div>

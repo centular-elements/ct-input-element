@@ -10,12 +10,75 @@ A element that display and edits a centular setting
 -->
 
 <dom-module id="ct-setting-element">
-  <template id="ct-setting-element">
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
+  <template>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style is="custom-style">
+            :host {
+                --paper-input-error: {
+                    color:#00ff00;
+                };
+                --paper-input-container:  {
+                    border-top:1px solid #ccc;
+                    border-left:1px solid #ccc;
+                    border-right:1px solid #ccc;
+                    border-bottom: none;
+                    padding: 0;
+                    margin-bottom: 24px;
+                };
+                /*padding to move from border */
+                --paper-input-container-input: {
+                    padding-left: 10px;
+                    left: auto;
+                };
+                --paper-input-container-label: {
+                    margin-left: 10px;
+                };
+                --paper-input-container-label-floating: {
+                    margin-left: 10px;
+                };
+                --paper-input-error: {
+                    left: auto !important;
+                    right: 20px !important;
+                    font-style: italic;
+                };
+                --paper-icon-button-ink-color: var(--breadcrumb-icon-color-ripple);
+            }
+            /* local color for button */
+            paper-button.fancy {
+                margin-top: 3px;
+            }
+            /*local dropdown menu */
+            paper-dropdown-menu.custom-dropdown {
+                width: 100%;
+                --paper-input-container: {
+                    border-top:1px solid #ccc;
+                    border-left:1px solid #ccc;
+                    border-right:1px solid #ccc;
+                    border-bottom: none;
+                    padding: 0;
+                    margin-bottom: 8px;
+                };
+                --paper-input-container-input: {
+                    padding-left: 10px;
+                };
+            }
+            .primary-box-container {
+                background: #3d3d3d;
+                margin-bottom: 40px;
+            }
+            .primary-box-container h3 {
+                color: #ffffff;
+                margin: 10px 0;
+            }
+            .breadcrumb-icon {
+                --paper-icon-button-ink-color: {#fff !important;};
+            }
+            .main-section .primary-box-container h3 {
+                font-size: 20px;
+                line-height: 21px;
+                padding: 0 15px;
+            }
+        </style>
 
     <div class="row row-easy">
           <div class="col-sm-8">
@@ -65,6 +128,8 @@ A element that display and edits a centular setting
             <template is="dom-if" restamp if="[[_checkNote(note)]]">
               <small>[[note]]</small>
             </template>
+            </div>
+            <div class="col-sm-8">
             <td class="text-center">
                 <paper-icon-button icon="create" class="table-button btn-default btn-sm" on-tap="_editHandler" raised></paper-icon-button>
                 <paper-icon-button icon="delete"  data-item-id$="[[item.id]]" class="table-button btn-danger btn-sm" on-tap="_modalHandler" raised></paper-icon-button>
@@ -102,6 +167,7 @@ A element that display and edits a centular setting
         errorMessage: {
           type: String
         },
+        //key for the setting to edit
         key: {
           type: String
         }
@@ -114,10 +180,10 @@ A element that display and edits a centular setting
         return note != "";
       },
       _editHandler : function(e){
-        alert('Editing the stuffs');
+        alert('Editing the key:' + this.key);
       },
-      _deleteHandler : function(e){
-        alert('Editing the stuffs');
+      _modalHandler : function(e){
+        alert('Deleting the key: ' + this.key);
       }
     });
   </script>
