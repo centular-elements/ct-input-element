@@ -2,14 +2,15 @@
 <link rel="import" href="../paper-input/paper-textarea.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../ct-editable-switcher/ct-editable-switcher.html">
 <!--
-`ct-setting-element`
-A element that display and edits a centular setting
+`ct-input-element`
+A element that display and edits a centular input
 
 @demo demo/index.html
 -->
 
-<dom-module id="ct-setting-element">
+<dom-module id="ct-input-element">
   <template>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style is="custom-style">
@@ -84,55 +85,66 @@ A element that display and edits a centular setting
           <div class="col-sm-8">
 
                <template is="dom-if"  restamp if="{{ _isInputType('textarea', type)}}">
-
-                 <paper-textarea
-                        class="input-element"
-                        label="[[label]]"
-                        required="[[required]]"
-                        auto-validate
-                        value="[[value]]"
-                        error-message="[[errorMessage]]" ></paper-textarea>
+                 <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
+                     <paper-textarea
+                            id='input'
+                            class="input-element"
+                            label="[[label]]"
+                            required="[[required]]"
+                            auto-validate
+                            value="[[value]]"
+                            error-message="[[errorMessage]]" ></paper-textarea>
+                  </ct-editable-switcher>
               </template>
 
               <template is="dom-if" restamp if="{{_isInputType('text', type) }}">
-                <paper-input
-                        class="input-element"
-                        label="[[label]]"
-                        required="[[required]]"
-                        value = "[[value]]"
-                        auto-validate
-                        error-message="[[errorMessage]]" ></paper-input>
+                  <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
+                    <paper-input
+                            id='input'
+                            class="input-element"
+                            label="[[label]]"
+                            required="[[required]]"
+                            value = "[[value]]"
+                            auto-validate
+                            error-message="[[errorMessage]]" ></paper-input>
+                  </ct-editable-switcher>
               </template>
 
               <template is="dom-if" restamp if="{{_isInputType('number', type) }}">
-                <paper-input
-                        class="input-element"
-                        label="[[label]]"
-                        required="[[required]]"
-                        value = "[[value]]"
-                        auto-validate
-                        error-message="[[errorMessage]]" ></paper-input>
+                <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
+                  <paper-input
+                          id='input'
+                          class="input-element"
+                          label="[[label]]"
+                          required="[[required]]"
+                          value = "[[value]]"
+                          auto-validate
+                          error-message="[[errorMessage]]" ></paper-input>
+                </ct-editable-switcher>
               </template>
 
 
               <template is="dom-if" restamp if="[[_isInputType('boolean', type)]]">
-                [[label]]
-                <paper-toggle-button
-                        class="input-element"
-                        required="[[required]]"
-                        checked="[[value]]"
-                        auto-validate
-                        error-message="[[errorMessage]]"></paper-toggle-button>
+                <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
+                  [[label]]
+                  <paper-toggle-button
+                          id='input'
+                          class="input-element"
+                          required="[[required]]"
+                          checked="[[value]]"
+                          auto-validate
+                          error-message="[[errorMessage]]"></paper-toggle-button>
+                </ct-editable-switcher>
               </template>
 
-            <template is="dom-if" restamp if="[[_checkNote(note)]]">
-              <small>[[note]]</small>
+              <template is="dom-if" restamp if="[[_checkNote(note)]]">
+                <small>[[note]]</small>
             </template>
             </div>
             <div class="col-sm-8">
             <td class="text-center">
                 <paper-icon-button icon="create" class="table-button btn-default btn-sm" on-tap="_editHandler" raised></paper-icon-button>
-                <paper-icon-button icon="delete"  data-item-id$="[[item.id]]" class="table-button btn-danger btn-sm" on-tap="_modalHandler" raised></paper-icon-button>
+                <paper-icon-button icon="delete"  data-item-id$="[[item.id]]" class="table-button btn-danger btn-sm" on-tap="_deleteHandler" raised></paper-icon-button>
             </td>
           </div>
         </div>
@@ -142,7 +154,7 @@ A element that display and edits a centular setting
   <script>
     Polymer({
 
-      is: 'ct-setting-element',
+      is: 'ct-input-element',
 
 
       properties: {
@@ -167,10 +179,6 @@ A element that display and edits a centular setting
         errorMessage: {
           type: String
         },
-        //key for the setting to edit
-        key: {
-          type: String
-        }
 
       },
       _isInputType: function(expectedType, type){
@@ -179,12 +187,38 @@ A element that display and edits a centular setting
       _checkNote : function(note){
         return note != "";
       },
-      _editHandler : function(e){
-        alert('Editing the key:' + this.key);
+      _deleteHandler : function(e){
+        this.fire('delete', e);
       },
-      _modalHandler : function(e){
-        alert('Deleting the key: ' + this.key);
-      }
+      _editHandler : function(e){
+          var input = this.$$('#input');
+          if(this._isStateEdit){
+              if(input.validate()){
+                  this._submitHandler(e);
+              }
+          } else {
+              this._toggleStatus(e);
+          }
+      },
+
+      _submitHandler : function(e){
+        var input = this.$$('#input');
+          e.preventDefault();
+
+          this.fire('edit', input.value);
+          this._toggleStatus();
+      },
+      _computeButtonText: function(isEdit){
+          return (isEdit) ? 'Save Details' : 'Edit Details';
+      },
+
+      _computeBtnStyle : function(isEdit){
+          return (isEdit) ? "btn-success" : "btn-primary";
+      },
+
+      _toggleStatus : function(){
+          this._isStateEdit = !this._isStateEdit;
+      },
     });
   </script>
 </dom-module>

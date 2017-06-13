@@ -4,44 +4,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>ct-setting-element demo</title>
+    <title>ct-input-element demo</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../ct-setting-element.html">
+    <link rel="import" href="../ct-input-element.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic ct-setting-element demo</h3>
+      <h3>Basic ct-input-element demo</h3>
       <demo-snippet>
         <template>
             <div><h4>Text</h4></div>
-            <ct-setting-element type='text'
+            <ct-input-element type='text'
                                 value='text'
                                 label='Text: '
-                                required error-message='This field is required'
-                                key='1'></ct-setting-element>
+                                required error-message='This field is required'></ct-input-element>
             <div><h4>Text Area</h4></div>
-            <ct-setting-element type='textarea'
+            <ct-input-element type='textarea'
                                 value='textarea'
-                                label='TextArea: '
-                                key='2'></ct-setting-element>
+                                label='TextArea: '></ct-input-element>
             <div><h4>Boolean</h4></div>
-            <ct-setting-element type='boolean'
+            <ct-input-element type='boolean'
                                 value='false'
-                                label='Boolean: '
-                                key='3'></ct-setting-element>
+                                label='Boolean: '></ct-input-element>
             <div><h4>Number</h4></div>
-            <ct-setting-element type='number'
+            <ct-input-element type='number'
                                 note='this is a note'
                                 value='1234'
-                                label='Number: '
-                                key='4'></ct-setting-element>
+                                label='Number: '></ct-input-element>
         </template>
       </demo-snippet>
     </div>
