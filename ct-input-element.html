@@ -82,8 +82,7 @@ A element that display and edits a centular input
         </style>
 
     <div class="row row-easy">
-          <div class="col-sm-8">
-
+          <div class="col-xs-8 col-sm-10">
                <template is="dom-if"  restamp if="{{ _isInputType('textarea', inputType)}}">
                  <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
 
@@ -230,11 +229,11 @@ A element that display and edits a centular input
                 <small>[[note]]</small>
             </template>
             </div>
-            <div class="col-sm-8">
-            <td class="text-center">
+            <div class="col-xs-4 col-sm-2">
+            <div class="text-center">
                 <paper-icon-button icon="create" class="table-button btn-default btn-sm" on-tap="_editHandler" raised></paper-icon-button>
                 <paper-icon-button icon="delete"  data-item-id$="[[item.id]]" class="table-button btn-danger btn-sm" on-tap="_deleteHandler" raised></paper-icon-button>
-            </td>
+            </div>
           </div>
         </div>
 
