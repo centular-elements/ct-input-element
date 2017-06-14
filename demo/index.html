@@ -21,22 +21,25 @@
       <demo-snippet>
         <template>
             <div><h4>Text</h4></div>
-            <ct-input-element type='text'
                                 value='text'
+                                <ct-input-element   input-type='text'
                                 label='Text: '
                                 required error-message='This field is required'></ct-input-element>
             <div><h4>Text Area</h4></div>
-            <ct-input-element type='textarea'
+            <ct-input-element   input-type='textarea'
                                 value='textarea'
-                                label='TextArea: '></ct-input-element>
+                                label='TextArea: '
+                                char-counter
+                                maxlength="160"></ct-input-element>
             <div><h4>Boolean</h4></div>
-            <ct-input-element type='boolean'
-                                value='false'
+            <ct-input-element   input-type='boolean'
+                                value='true'
                                 label='Boolean: '></ct-input-element>
             <div><h4>Number</h4></div>
-            <ct-input-element type='number'
+            <ct-input-element   input-type='number'
                                 note='this is a note'
                                 value='1234'
+                                allowed-pattern="[0-9\.]"
                                 label='Number: '></ct-input-element>
         </template>
       </demo-snippet>

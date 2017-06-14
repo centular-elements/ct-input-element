@@ -84,56 +84,145 @@ A element that display and edits a centular input
     <div class="row row-easy">
           <div class="col-sm-8">
 
-               <template is="dom-if"  restamp if="{{ _isInputType('textarea', type)}}">
+               <template is="dom-if"  restamp if="{{ _isInputType('textarea', inputType)}}">
                  <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
+
                      <paper-textarea
                             id='input'
                             class="input-element"
-                            label="[[label]]"
-                            required="[[required]]"
-                            auto-validate
-                            value="[[value]]"
-                            error-message="[[errorMessage]]" ></paper-textarea>
+                            label = "[[label]]"
+                            value = "[[value]]"
+                            disabled = "[[disabled]]"
+                            invalid = "[[invalid]]"
+                            allowedPattern = "[[allowedPattern]]"
+                            type = "[[type]]"
+                            list = "[[list]]"
+                            pattern = "[[pattern]]"
+                            required = "[[required]]"
+                            errorMessage ="[[errorMessage]]"
+                            charCounter = "[[charCounter]]"
+                            noLabelFloat ="[[noLabelFloat]]"
+                            alwaysFloatLabel ="[[alwaysFloatLabel]]"
+                            autoValidate = "[[autoValidate]]"
+                            validator = "[[validator]]"
+                            autocomplete = "[[autocomplete]]"
+                            autofocus = "[[autofocus]]"
+                            inputmode = "[[inputmode]]"
+                            minlength = "[[minlength]]"
+                            min = "[[min]]"
+                            max = "[[max]]"
+                            step = "[[step]]"
+                            name = "[[name]]"
+                            placeholder = "[[placeholder]]"
+                            readonly = "[[readonly]]"
+                            size = "[[size]]"
+                            autocapitalize = "[[autocapitalize]]"
+                            autocorrect = "[[autocorrect]]"
+                            autosave = "[[autosave]]"
+                            results = "[[results]]"
+                            accept = "[[accept]]"
+                            multiple = "[[multiple]]"
+                            error-message="[[errorMessage]]">
+                            <div suffix class="input-suffix"> [[suffix]]</div>
+                          </<paper-textarea >
                   </ct-editable-switcher>
               </template>
 
-              <template is="dom-if" restamp if="{{_isInputType('text', type) }}">
+              <template is="dom-if" restamp if="{{_isInputType('text', inputType) }}">
                   <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
                     <paper-input
-                            id='input'
-                            class="input-element"
-                            label="[[label]]"
-                            required="[[required]]"
-                            value = "[[value]]"
-                            auto-validate
-                            error-message="[[errorMessage]]" ></paper-input>
+                    id='input'
+                    class="input-element"
+                    label = "[[label]]"
+                    value = "[[value]]"
+                    disabled = "[[disabled]]"
+                    invalid = "[[invalid]]"
+                    allowedPattern = "[[allowedPattern]]"
+                    type = "text"
+                    list = "[[list]]"
+                    pattern = "[[pattern]]"
+                    required = "[[required]]"
+                    errorMessage ="[[errorMessage]]"
+                    charCounter = "[[charCounter]]"
+                    noLabelFloat ="[[noLabelFloat]]"
+                    alwaysFloatLabel ="[[alwaysFloatLabel]]"
+                    autoValidate = "[[autoValidate]]"
+                    validator = "[[validator]]"
+                    autocomplete = "[[autocomplete]]"
+                    autofocus = "[[autofocus]]"
+                    inputmode = "[[inputmode]]"
+                    minlength = "[[minlength]]"
+                    min = "[[min]]"
+                    max = "[[max]]"
+                    step = "[[step]]"
+                    name = "[[name]]"
+                    placeholder = "[[placeholder]]"
+                    readonly = "[[readonly]]"
+                    size = "[[size]]"
+                    autocapitalize = "[[autocapitalize]]"
+                    autocorrect = "[[autocorrect]]"
+                    autosave = "[[autosave]]"
+                    results = "[[results]]"
+                    accept = "[[accept]]"
+                    multiple = "[[multiple]]"
+                    error-message="[[errorMessage]]">
+                    <div suffix class="input-suffix"> [[suffix]]</div>
+                  </paper-input>
                   </ct-editable-switcher>
               </template>
 
-              <template is="dom-if" restamp if="{{_isInputType('number', type) }}">
+              <template is="dom-if" restamp if="{{_isInputType('number', inputType) }}">
                 <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
                   <paper-input
-                          id='input'
-                          class="input-element"
-                          label="[[label]]"
-                          required="[[required]]"
-                          value = "[[value]]"
-                          auto-validate
-                          error-message="[[errorMessage]]" ></paper-input>
+                  id='input'
+                  class="input-element"
+                  label = "[[label]]"
+                  value = "[[value]]"
+                  disabled = "[[disabled]]"
+                  invalid = "[[invalid]]"
+                  allowedPattern = "[[allowedPattern]]"
+                  type = "number"
+                  list = "[[list]]"
+                  pattern = "[[pattern]]"
+                  required = "[[required]]"
+                  errorMessage ="[[errorMessage]]"
+                  charCounter = "[[charCounter]]"
+                  noLabelFloat ="[[noLabelFloat]]"
+                  alwaysFloatLabel ="[[alwaysFloatLabel]]"
+                  autoValidate = "[[autoValidate]]"
+                  validator = "[[validator]]"
+                  autocomplete = "[[autocomplete]]"
+                  autofocus = "[[autofocus]]"
+                  inputmode = "[[inputmode]]"
+                  minlength = "[[minlength]]"
+                  min = "[[min]]"
+                  max = "[[max]]"
+                  step = "[[step]]"
+                  name = "[[name]]"
+                  placeholder = "[[placeholder]]"
+                  readonly = "[[readonly]]"
+                  size = "[[size]]"
+                  autocapitalize = "[[autocapitalize]]"
+                  autocorrect = "[[autocorrect]]"
+                  autosave = "[[autosave]]"
+                  results = "[[results]]"
+                  accept = "[[accept]]"
+                  multiple = "[[multiple]]"
+                  error-message="[[errorMessage]]">
+                  <div suffix class="input-suffix"> [[suffix]]</div>
                 </ct-editable-switcher>
               </template>
 
 
-              <template is="dom-if" restamp if="[[_isInputType('boolean', type)]]">
+              <template is="dom-if" restamp if="[[_isInputType('boolean', inputType)]]">
                 <ct-editable-switcher edit-mode$="[[_isStateEdit]]">
                   [[label]]
                   <paper-toggle-button
                           id='input'
                           class="input-element"
                           required="[[required]]"
-                          checked="[[value]]"
-                          auto-validate
-                          error-message="[[errorMessage]]"></paper-toggle-button>
+                          checked="[[_isTrue(value)]]"></paper-toggle-button>
+                          <div suffix class="input-suffix"> [[suffix]]</div>
                 </ct-editable-switcher>
               </template>
 
@@ -156,31 +245,17 @@ A element that display and edits a centular input
 
       is: 'ct-input-element',
 
-
       properties: {
-        //Available options
-        //text
-        //number
-        //boolean
-        //textarea
-        type: {
-          type: String,
-          notify: true
-        },
-        label: {
+        inputType: {
             type: String
         },
         note: {
             type: String
-        },
-        value : {
-           type : String
-        },
-        errorMessage: {
-          type: String
-        },
-
+        }
       },
+      behaviors: [
+        Polymer.PaperInputBehavior
+      ],
       _isInputType: function(expectedType, type){
         return expectedType === type;
       },
@@ -200,7 +275,9 @@ A element that display and edits a centular input
               this._toggleStatus(e);
           }
       },
-
+      _isTrue: function(value){
+          return value === "true";
+      },
       _submitHandler : function(e){
         var input = this.$$('#input');
           e.preventDefault();
