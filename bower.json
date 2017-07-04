@@ -5,7 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
-    "paper-input": "PolymerElements/paper-input#^2.0.1",
+    "paper-input": "PolymerElements/paper-input#^1.1.23",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#^2.0.0",
     "ct-editable-switcher": "git://github.com/centular-elements/ct-editable-switcher.git"
   },
